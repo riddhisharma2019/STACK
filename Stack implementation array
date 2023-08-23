@@ -1,0 +1,50 @@
+class Stack{
+
+int size =10000;
+int ar[] =new int[size];
+int top=-1;
+
+void push(int x){
+
+top++;
+ar[top] =x;
+}
+
+int pop(){
+
+int x = ar[top];
+top--;
+return x;
+}
+
+int peek(){
+
+return ar[top];
+
+}
+
+int size(){
+return top + 1;
+}
+}
+
+public static void main(String[] args){
+
+stack s = new stack();
+s.push(3);
+s.push(5);
+s.push(7);
+
+  System.out.println("Top of the stack before deleting any element " + s.peek());
+    System.out.println("The element deleted is " + s.pop());
+
+
+
+
+
+
+
+
+
+
+
