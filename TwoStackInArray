@@ -1,0 +1,75 @@
+package org.example.stack;
+
+public class TwoStackInArray {
+
+    int size;
+    int top1, top2;
+    int arr[];
+
+    // constructor
+       TwoStackInArray(int n) {
+        arr = new int[n];
+        size = n;
+        top1 = -1;
+        top2 = size;
+
+    }
+
+    // method to push an element x to stack 1
+    void push1(int x) {
+        if (top2 - top1 > 1) {       // there is at least one empty space for new element........
+            top1++;
+            arr[top1] = x;
+
+        } else {
+            System.out.println("stack is overflow...");
+        }
+
+    }
+
+    void push2(int x) {
+        if (top2 - top1 > 1) {
+            top2--;
+            arr[top2] = x;
+        } else {
+            System.out.println("stack overflow...");
+        }
+    }
+
+    int pop1() {
+        if (top1 >= 0) {     // stack is not empty....
+            int ans = arr[top1];
+            top1--;
+            return ans;
+        } else {
+            System.out.println("underflow condition...");
+            return -1;
+        }
+
+    }
+
+
+    int pop2() {
+        if (top2 < size) {
+            int ans = arr[top2];
+            top2++;
+            return ans;
+        } else {
+            return -1;
+        }
+    }
+
+    public static void main(String[] args) {
+        TwoStackInArray twoStacks = new TwoStackInArray(5);
+
+        twoStacks.push1(10);
+        twoStacks.push2(20);
+        twoStacks.push1(30);
+        twoStacks.push2(40);
+        twoStacks.push1(50);
+
+        System.out.println("Popped from stack 1: " + twoStacks.pop1());
+        System.out.println("Popped from stack 2: " + twoStacks.pop2());
+    }
+}
+
