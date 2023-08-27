@@ -2,7 +2,7 @@ class Stack{
 
 int size =10000;
 int ar[] =new int[size];
-int top=-1;
+int top=-1;      // it defines that the stack is empty bcz it initialise with 0 index of array   
 
 void push(int x){
 
