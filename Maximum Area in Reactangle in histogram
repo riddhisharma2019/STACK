@@ -1,0 +1,58 @@
+
+public class MaximumRectangleInHistogram {
+
+    public static int[] previousSmaller(int[] a) {
+        int[] ps = new int[a.length];
+        Stack<Integer> stack = new Stack<>();
+        
+        for (int i = 0; i < a.length; i++) {
+            while (!stack.isEmpty() && a[stack.peek()] >= a[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                ps[i] = -1;
+            } else {
+                ps[i] = stack.peek();
+            }
+            stack.push(i);
+        }
+        return ps;
+    }
+
+    public static int[] nextSmaller(int[] a) {
+        int[] ns = new int[a.length];
+        Stack<Integer> stack = new Stack<>();
+        
+        for (int i = a.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && a[stack.peek()] >= a[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                ns[i] = a.length;
+            } else {
+                ns[i] = stack.peek();
+            }
+            stack.push(i);
+        }
+        return ns;
+    }
+
+    public static int largestRectangleArea(int[] a) {
+        int[] ps = previousSmaller(a);
+        int[] ns = nextSmaller(a);
+        int maxArea = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            int width = ns[i] - ps[i] - 1;
+            int area = a[i] * width;
+            maxArea = Math.max(maxArea, area);
+        }
+
+        return maxArea;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {2, 1, 5, 6, 2, 3};
+        System.out.println("Maximum area: " + largestRectangleArea(a)); // Output: 10
+    }
+}
