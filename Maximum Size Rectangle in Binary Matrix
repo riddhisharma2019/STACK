@@ -1,0 +1,32 @@
+
+int largestArea(int[] [] arr ){
+int currRow = arr[0];
+int maxArea= 0;
+
+for(int i=0;i<arr.length;i++){
+   for(int j = 0; j< arr[0].length; j++){
+     if(arr[i][j]==1){
+       currRow += 1;
+}
+else{
+        currRow =0;
+}
+}
+
+maxArea = Math.max(maxArea, maxHistogram(a));
+
+}
+
+return maxArea;
+}
+
+
+
+public static int maxHistogram(int[] a){
+
+------------------------------------
+}
+
+
+
+}
